@@ -9,7 +9,7 @@ routes_auth = Blueprint("routes_auth", __name__)
 @routes_auth.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
-    if data['username'] == "Carlos Contreras":
+    if data['username'] == "admin":
         return write_token(data=request.get_json())
     else:
         response = jsonify({"message": "User not found"})
