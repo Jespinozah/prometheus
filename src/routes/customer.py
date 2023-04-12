@@ -10,6 +10,7 @@ main = Blueprint('customer_blueprint', __name__)
 def get_customers():
     try:
         customers = customerModel.get_customers() 
-        return jsonpickle.encode(customers)
+        #return jsonpickle.encode(customers)
+        return jsonify(customers)
     except Exception as ex:
         return jsonify({'message':"customers test"})

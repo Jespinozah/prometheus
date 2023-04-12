@@ -14,7 +14,8 @@ class customerModel():
                 resultset=cursor.fetchall()
                 for row in resultset:
                     customer_aux=customer(row[0],row[1],row[2],row[3],row[4],row[5])
-                    customers.append(customer_aux)
+                    #customers.append(customer_aux)
+                    customers.append(customer_aux.to_JSON())
             connection.close()
             return customers
         except Exception as ex:
