@@ -14,3 +14,14 @@ def get_customers():
         return jsonify(customers)
     except Exception as ex:
         return jsonify({'message':"customers test"})
+    
+@main.route('/<id>')
+def get_customer(id):
+    try:
+        customer = customerModel.get_customer(id)
+        if customer != None:
+            return jsonify(customer)
+        else:
+            return jsonify({}), 404
+    except Exception as ex:
+        return jsonify({'message':str(ex)}), 500
