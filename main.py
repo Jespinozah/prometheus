@@ -1,12 +1,11 @@
-# main.py
-from flask import Flask
-from auth import bpAuth as auth
+from project.app import create_app, logger
 from flask_cors import CORS
 
-app = Flask(__name__)
-app.register_blueprint(auth)
+
+logger.info('Server has started.')
+
+app = create_app()
+
 CORS(app)
-
-
 if __name__ == "__main__":
     app.run()
