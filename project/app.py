@@ -6,6 +6,7 @@ import os
 import logging
 from flask import Flask
 from project.controllers.auth import bpAuth as auth
+from project.controllers.user import bpUser as user
 from project.database import db
 from flasgger import Swagger
 
@@ -17,6 +18,8 @@ logger = logging.getLogger(__name__)
 def create_app():
     app = Flask(__name__)
     app.register_blueprint(auth)
+    app.register_blueprint(user)
+
     app_settings = os.getenv('APP_SETTINGS')
     app.config.from_object(app_settings)
 
