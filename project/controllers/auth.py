@@ -5,13 +5,15 @@ from jwt.exceptions import ExpiredSignatureError
 from project.dao.userDao import UserDao
 from project.models.user import User
 from project.models.userData import UserData
+from flasgger import swag_from
+
 
 
 import jwt
 
 bpAuth = Blueprint('user', __name__, url_prefix='/auth')
 
-
+@swag_from("swagger/userRoute/userLogin.yml", methods=["POST"])
 @bpAuth.route('/login', methods=['POST'])
 def login():
     auth = request.json
